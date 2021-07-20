@@ -23,9 +23,10 @@ export class CatsService {
   constructor(private catsStore: CatsStore) {
   }
 
-  initCats() {
+  initCat() {
     this.catsStore.set(this.objs)
   }
+
 
   like(id: number,liked: any) {
     // this.objs.map((el: any) => {

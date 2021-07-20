@@ -8,5 +8,5 @@ export class CatsQuery extends QueryEntity<CatsState> {
   constructor(protected store: CatsStore) {
     super(store);
   }
-  cats$ = this.selectAll();
+  cats$ = this.selectAll()
 }

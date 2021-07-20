@@ -11,7 +11,7 @@ export class ListComponent implements OnInit {
   constructor(private catsService: CatsService) { }
 
   ngOnInit(): void {
-    this.catsService.initCats();
+    this.catsService.initCat()
   }
 
 }

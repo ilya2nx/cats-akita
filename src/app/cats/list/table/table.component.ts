@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { CatsQuery } from '../../_state/cats.query';
 import { CatsService } from '../../_state/cats.service';
 
 @Component({
@@ -7,14 +8,15 @@ import { CatsService } from '../../_state/cats.service';
   styleUrls: ['./table.component.scss']
 })
 export class TableComponent implements OnInit {
+  cats$ = this.catsQuery.cats$
 
-  constructor(private catsService: CatsService) { }
+  constructor(private catsService: CatsService, private catsQuery: CatsQuery) { }
 
   ngOnInit(): void {
   }
 
-  get list() {
-    return this.catsService.objs
+  like(id: number,liked: boolean) {
+    this.catsService.like(id, !liked)
   }
 
 }
