@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { CatsQuery } from '../_state/cats.query';
 import { CatsService } from '../_state/cats.service';
 
 @Component({
@@ -9,9 +8,10 @@ import { CatsService } from '../_state/cats.service';
 })
 export class ListComponent implements OnInit {
 
-  constructor(private catsService: CatsService, private catsQuery: CatsQuery) { }
+  constructor(private catsService: CatsService) { }
 
   ngOnInit(): void {
+    this.catsService.initCats();
   }
 
 }

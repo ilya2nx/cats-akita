@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { CatsQuery } from '../../_state/cats.query';
 import { CatsService } from '../../_state/cats.service';
 
 @Component({
@@ -6,14 +7,17 @@ import { CatsService } from '../../_state/cats.service';
   templateUrl: './tile.component.html',
   styleUrls: ['./tile.component.scss']
 })
-export class TileComponent implements OnInit {
+export class TileComponent {
 
-  constructor(private catsService: CatsService) { }
+  cats$ = this.catsQuery.cats$
 
-  ngOnInit(): void {
+  constructor(private catsService: CatsService, private catsQuery: CatsQuery) { }
+
+  like(id: number,liked: boolean) {
+    this.catsService.like(id, !liked)
   }
 
-  get list() {
-    return this.catsService.objs
+  delete(id: number) {
+    this.catsService.delete(id)
   }
 }

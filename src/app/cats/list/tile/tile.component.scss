@@ -42,14 +42,15 @@
 }
 
 .btn {
-  cursor: pointer;
   &_delete {
     background-color: red;
     border: none;
     color: whitesmoke;
+    cursor: pointer;
   }
   &_update {
     background-color: greenyellow;
     border: none;
+    cursor: pointer;
   }
 }

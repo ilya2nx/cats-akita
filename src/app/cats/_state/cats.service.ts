@@ -3,9 +3,7 @@ import { CatsStore } from './cats.store';
 
 @Injectable({ providedIn: 'root' })
 export class CatsService {
-
-  constructor(private catsStore: CatsStore) {
-  }
+  toggle = false
 
   objs = [
     {image: 'http://html.ftpes.ru/FrontEndTest/Shironeko.jpg' , name: 'Shironeko', description: 'Самый счастливый и сонный кот в мире', id: 1, liked: false},
@@ -22,6 +20,27 @@ export class CatsService {
     {image: 'http://html.ftpes.ru/FrontEndTest/Colonel_Meow.jpg', name: 'Colonel Meow', description: 'Кот с самой длинной шерстью', id: 12, liked: false}
   ]
 
-  toggle = false
+  constructor(private catsStore: CatsStore) {
+  }
+
+  initCats() {
+    this.catsStore.set(this.objs)
+  }
+
+  like(id: number,liked: any) {
+    // this.objs.map((el: any) => {
+    //   if (el.id === id) {
+    //     el.liked = !el.liked
+    //   }
+    // })
+    // const currentCat = this.catsQuery.cats.find(entity => {entity.id === id})
+    this.catsStore.update(id, {liked})
+  }
+
+  delete(id: number) {
+    const index = this.objs.findIndex(el => el.id === id)
+    this.objs.splice(index, 1)
+    this.catsStore.remove(id)
+  }
 
 }
