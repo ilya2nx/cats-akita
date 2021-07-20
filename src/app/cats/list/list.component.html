@@ -1,0 +1,10 @@
+<div class="switcher">
+  <a routerLinkActive="active" class="switcher__title" [routerLink]="['/list', 'tile']">Плитка</a>
+  <a routerLinkActive="active" class="switcher__title" [routerLink]="['/list', 'table']">Таблица</a>
+</div>
+
+<router-outlet></router-outlet>
+
+<div class="btn-position">
+  <button class="btn" routerLink="/create">Добавить нового котика</button>
+</div>

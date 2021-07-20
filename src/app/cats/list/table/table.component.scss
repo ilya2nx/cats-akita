@@ -1,0 +1,65 @@
+:host{
+  display: flex;
+  flex-wrap: wrap;
+  max-width: 1580px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 35px;
+}
+
+.card {
+  width: 100%;
+  display: flex;
+  margin-bottom: 40px;
+}
+
+.card__photo {
+  width: 10.5%;
+}
+
+.card__inner {
+  background: #a3a3a3;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.card__content {
+  padding-left: 20px;
+}
+
+.card__title {
+  color: white;
+  font-size: 30px;
+  text-transform: uppercase;
+  padding-top: 17px;
+  padding-bottom: 5px;
+}
+
+.card__description {
+  color: white;
+  font-size: 21px;
+}
+
+.like-pos {
+  margin-right: 25px;
+  margin-top: auto;
+  margin-bottom: auto;
+  .like {
+    cursor: pointer;
+    width: 35px;
+  }
+}
+
+.btn {
+  cursor: pointer;
+  &_delete {
+    background-color: red;
+    border: none;
+    color: whitesmoke;
+  }
+  &_update {
+    background-color: greenyellow;
+    border: none;
+  }
+}

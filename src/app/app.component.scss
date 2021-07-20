@@ -1,0 +1,37 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400&display=swap');
+
+.gradient {
+  background: url('../images/gradient.png');
+  height: 24px;
+  width: 100%;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: top center;
+}
+
+.title {
+  background: #686868;
+  height: 90px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  .title__text {
+    text-align: center;
+    font-size: 25px;
+    line-height: 20px;
+    text-transform: uppercase;
+    color: white;
+  }
+}
+
+.footer {
+  background: #686868;
+  height: 55px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  .footer__text {
+    color: white;
+    font-size: 18px;
+  }
+}

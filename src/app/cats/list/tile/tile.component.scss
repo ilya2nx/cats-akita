@@ -1,0 +1,55 @@
+:host {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  margin-top: 50px;
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 1570px;
+}
+
+.card {
+  width: 22%;
+}
+
+.card__photo {
+  width: 100%;
+  display: block;
+}
+
+.card__inner {
+  display: flex;
+  justify-content: space-between;
+  background: #a3a3a3;
+  height: 60px;
+  margin-bottom: 70px;
+  align-items: center;
+}
+
+.card__title {
+  color: white;
+  font-size: 21px;
+  padding-left: 20px;
+}
+
+.like-pos {
+  margin-right: 20px;
+  .like {
+    cursor: pointer;
+    width: 35px;
+  }
+}
+
+.btn {
+  cursor: pointer;
+  &_delete {
+    background-color: red;
+    border: none;
+    color: whitesmoke;
+  }
+  &_update {
+    background-color: greenyellow;
+    border: none;
+  }
+}
