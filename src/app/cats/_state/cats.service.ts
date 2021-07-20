@@ -39,8 +39,8 @@ export class CatsService {
   }
 
   delete(id: number) {
-    const index = this.objs.findIndex(el => el.id === id)
-    this.objs.splice(index, 1)
+    // const index = this.objs.findIndex(el => el.id === id)
+    // this.objs.splice(index, 1)
     this.catsStore.remove(id)
   }
 
