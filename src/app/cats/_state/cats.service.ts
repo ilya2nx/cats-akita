@@ -56,7 +56,4 @@ export class CatsService {
     this.catsStore.add(tempCat)
   }
 
-  getById() {
-    
-  }
 }
