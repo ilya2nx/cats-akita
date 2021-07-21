@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { ActivatedRoute } from '@angular/router';
 import { CatsQuery } from '../_state/cats.query';
 import { CatsService } from '../_state/cats.service';
 
@@ -19,7 +20,11 @@ export class CreateComponent implements OnInit {
 
   form!: FormGroup;
 
-  constructor(private catsService: CatsService, private catsQuery: CatsQuery) { 
+  id;
+
+  constructor(private catsService: CatsService, private catsQuery: CatsQuery, route: ActivatedRoute) { 
+    this.id = +route.snapshot.params.id;
+    console.log(this.id)
    }
 
   ngOnInit(): void {

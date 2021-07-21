@@ -13,8 +13,7 @@ export class TileComponent implements OnInit {
   cats$ = this.catsQuery.cats$
   id!: number;
 
-  constructor(private catsService: CatsService, private catsQuery: CatsQuery, private route: ActivatedRoute) { 
-    this.id = +this.route.snapshot.params.id;
+  constructor(private catsService: CatsService, private catsQuery: CatsQuery) { 
   }
 
   ngOnInit() {
