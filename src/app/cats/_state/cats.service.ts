@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { CatsQuery } from './cats.query';
 import { CatsStore } from './cats.store';
 
 @Injectable({ providedIn: 'root' })
@@ -6,6 +7,8 @@ export class CatsService {
   toggle = false
 
   warnings: any = {}
+
+  id!: number;
 
   objs = [
     {image: 'http://html.ftpes.ru/FrontEndTest/Shironeko.jpg' , name: 'Shironeko', description: 'Самый счастливый и сонный кот в мире', id: 1, liked: false},
@@ -22,7 +25,7 @@ export class CatsService {
     {image: 'http://html.ftpes.ru/FrontEndTest/Colonel_Meow.jpg', name: 'Colonel Meow', description: 'Кот с самой длинной шерстью', id: 12, liked: false}
   ]
 
-  constructor(private catsStore: CatsStore) {
+  constructor(private catsStore: CatsStore, private catsQuery: CatsQuery) {
   }
 
   initCat() {
@@ -53,10 +56,7 @@ export class CatsService {
     this.catsStore.add(tempCat)
   }
 
-  setCurrentCat(id: number) {
-    this.objs.find(el => {
-      return el.id === id
-    })
+  getById() {
+    
   }
-
 }

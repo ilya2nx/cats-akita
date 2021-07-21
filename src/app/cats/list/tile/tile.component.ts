@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Params } from '@angular/router';
 import { CatsQuery } from '../../_state/cats.query';
 import { CatsService } from '../../_state/cats.service';
 
@@ -7,11 +8,17 @@ import { CatsService } from '../../_state/cats.service';
   templateUrl: './tile.component.html',
   styleUrls: ['./tile.component.scss']
 })
-export class TileComponent {
+export class TileComponent implements OnInit {
 
   cats$ = this.catsQuery.cats$
+  id!: number;
 
-  constructor(private catsService: CatsService, private catsQuery: CatsQuery) { }
+  constructor(private catsService: CatsService, private catsQuery: CatsQuery, private route: ActivatedRoute) { 
+    this.id = +this.route.snapshot.params.id;
+  }
+
+  ngOnInit() {
+  }
 
   like(id: number,liked: boolean) {
     this.catsService.like(id, !liked)
@@ -20,4 +27,5 @@ export class TileComponent {
   delete(id: number) {
     this.catsService.delete(id)
   }
+
 }

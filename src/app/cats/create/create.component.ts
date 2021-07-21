@@ -19,7 +19,8 @@ export class CreateComponent implements OnInit {
 
   form!: FormGroup;
 
-  constructor(private catsService: CatsService, private catsQuery: CatsQuery) { }
+  constructor(private catsService: CatsService, private catsQuery: CatsQuery) { 
+   }
 
   ngOnInit(): void {
     this.form = new FormGroup({
