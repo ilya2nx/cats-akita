@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { CatsQuery } from '../_state/cats.query';
 import { CatsService } from '../_state/cats.service';
 
 @Component({
@@ -8,10 +9,10 @@ import { CatsService } from '../_state/cats.service';
 })
 export class ListComponent implements OnInit {
 
-  constructor(private catsService: CatsService) { }
+  constructor(private catsService: CatsService, private catsQuery: CatsQuery) { }
 
-  ngOnInit(): void {
-    this.catsService.initCat()
+  ngOnInit(): void {    
+    if (!this.catsQuery.getHasCache()) this.catsService.initCat();
   }
 
 }

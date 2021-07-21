@@ -20,6 +20,5 @@ export class CatsStore extends EntityStore<CatsState> {
   constructor() {
     super(createInitialState());
   }
-
 }
 

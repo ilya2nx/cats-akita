@@ -5,6 +5,8 @@ import { CatsStore } from './cats.store';
 export class CatsService {
   toggle = false
 
+  warnings: any = {}
+
   objs = [
     {image: 'http://html.ftpes.ru/FrontEndTest/Shironeko.jpg' , name: 'Shironeko', description: 'Самый счастливый и сонный кот в мире', id: 1, liked: false},
     {image: 'http://html.ftpes.ru/FrontEndTest/Garfi.jpg', name: 'Garfi', description: 'Самый злой кот в мире', id: 2, liked: false},
@@ -42,6 +44,19 @@ export class CatsService {
     // const index = this.objs.findIndex(el => el.id === id)
     // this.objs.splice(index, 1)
     this.catsStore.remove(id)
+  }
+
+  add(image: string, name: string, description: string) {  
+    const tempCat = {
+      image, name, description, id: Math.random(), liked: false
+    }
+    this.catsStore.add(tempCat)
+  }
+
+  setCurrentCat(id: number) {
+    this.objs.find(el => {
+      return el.id === id
+    })
   }
 
 }

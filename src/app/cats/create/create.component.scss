@@ -1,0 +1,122 @@
+.modal {
+  margin-top: 20px;
+}
+
+.modal-content {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  pointer-events: auto;
+  background-color: #fff;
+  background-clip: padding-box;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  box-shadow: 2px 3px 10px rgba(0, 0, 0, 0.2);
+  border-radius: 10px;
+  outline: 0;
+}
+
+.modal-header {
+  display: flex;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 1rem;
+  border-bottom: 1px solid #dee2e6;
+  border-top-left-radius: calc(0.3rem - 1px);
+  border-top-right-radius: calc(0.3rem - 1px);
+}
+
+.close {
+  position: relative;
+  padding: 10px 10px;
+  margin: -10px -10px -10px auto;
+  opacity: 0.5;
+  }
+  .close:hover {
+  opacity: 1;
+  cursor: pointer;
+  }
+  .close:before, .close:after {
+  position: absolute;
+  content: ' ';
+  height: 16px;
+  width: 2px;
+  background-color: #333;
+  margin-top: -8px;
+  }
+  .close:before {
+  transform: rotate(45deg);
+  }
+  .close:after {
+  transform: rotate(-45deg);
+  }
+
+.modal-title {
+  margin-bottom: 0;
+}
+
+.modal-body {
+  position: relative;
+  flex: 1 1 auto;
+  padding: 1rem;
+  .mb-3 {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 5px;
+  }
+  .warning {
+    color: brown;
+    display: flex;
+    margin-left: auto;
+    margin-top: -5px;
+  }
+}
+
+.modal-footer {
+  display: flex;
+  flex-wrap: wrap;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: flex-end;
+  padding: 0.75rem;
+  border-top: 1px solid #dee2e6;
+  border-bottom-right-radius: calc(0.3rem - 1px);
+  border-bottom-left-radius: calc(0.3rem - 1px);
+  .btn {
+    margin-left: auto;
+    margin-right: auto;
+    color: #42b983;
+    border-radius: 99px;
+    letter-spacing: 0.05em;
+    border: 1px solid #42b983;
+    text-decoration: none;
+    text-transform: uppercase;
+    padding: 0.5rem 1.5rem;
+    font-weight: 700;
+    background: #fff;
+    transition: all 0.6s;
+  }
+  .btn:hover {
+    cursor: pointer;
+    opacity: 0.8;
+    background: #42b983;
+    color: #fff;
+  }
+}
+
+input {
+  &.ng-invalid.ng-touched {
+    border: 1px solid red;
+  }
+  &.ng-valid.ng-touched {
+    border: 1px solid green;
+  }
+}
+
+@media (min-width: 576px) {
+  .modal-dialog {
+    max-width: 500px;
+    margin: 1.75rem auto;
+  }
+}

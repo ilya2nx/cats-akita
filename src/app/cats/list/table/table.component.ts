@@ -19,4 +19,8 @@ export class TableComponent implements OnInit {
     this.catsService.like(id, !liked)
   }
 
+  delete(id: number) {
+    this.catsService.delete(id)
+  }
+
 }

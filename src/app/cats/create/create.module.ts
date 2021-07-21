@@ -1,6 +1,6 @@
 import { CommonModule } from "@angular/common";
 import { NgModule } from "@angular/core";
-import { FormsModule } from "@angular/forms";
+import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { RouterModule } from "@angular/router";
 import { CreateComponent } from "./create.component";
 
@@ -11,6 +11,7 @@ import { CreateComponent } from "./create.component";
  imports: [
    CommonModule,
    FormsModule,
+   ReactiveFormsModule,
    RouterModule.forChild([
     {path: '', component: CreateComponent}
    ])

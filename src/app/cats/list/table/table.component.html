@@ -4,7 +4,7 @@
     <div class="card__content">
       <p class="card__title">{{ cat.name }}</p>
       <p class="card__description">{{ cat.description }}</p>
-      <button  class="btn_delete">Удалить</button>
+      <button (click)="delete(cat.id)" class="btn_delete">Удалить</button>
       <button  [routerLink]="['/create', cat.id]" class="btn_update" >Редактировать</button>
     </div>
     <div (click)="like(cat.id, cat.liked)" class="card__like_pos like-pos">
