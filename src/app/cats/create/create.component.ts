@@ -25,6 +25,7 @@ export class CreateComponent implements OnInit {
   constructor(private catsService: CatsService, private catsQuery: CatsQuery, route: ActivatedRoute) { 
     this.id = +route.snapshot.params.id;
     console.log(this.id)
+    const catCard = catsQuery.getEntity(this.id);
    }
 
   ngOnInit(): void {
