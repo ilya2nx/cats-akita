@@ -23,4 +23,8 @@ export class TableComponent implements OnInit {
     this.catsService.delete(id)
   }
 
+  toggle() {
+    this.catsService.changeT()
+  }
+
 }

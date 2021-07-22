@@ -3,8 +3,8 @@
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel" >Создать новую карточку</h5>
-          <!-- <h5 class="modal-title" id="exampleModalLabel" *ngIf="Cat.toggle">Редактировать карточку</h5> -->
+          <h5 class="modal-title" id="exampleModalLabel" *ngIf="!toggle">Создать новую карточку</h5>
+          <h5 class="modal-title" id="exampleModalLabel" *ngIf="toggle">Редактировать карточку</h5>
           <button type="button" class="close" [routerLink]="['/list', 'tile']"></button>
         </div>
         <div class="modal-body">
@@ -36,8 +36,8 @@
         </div>
         </div>
         <div class="modal-footer">
-          <button (click)="add()" [disabled]="form.invalid" type="submit" class="btn" >Создать</button>
-          <!-- <button (click)="Cat.onUpdate()" type="button" class="btn" [routerLink]="['/list', 'tile']" *ngIf="Cat.toggle">Редактировать</button> -->
+          <button (click)="add()" [disabled]="form.invalid" type="submit" class="btn" *ngIf="!toggle">Создать</button>
+          <button (click)="update()" type="button" class="btn" *ngIf="toggle">Редактировать</button>
         </div>
       </div>
     </div>

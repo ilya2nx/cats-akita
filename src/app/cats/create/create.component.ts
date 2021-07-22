@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
+
 import { CatsQuery } from '../_state/cats.query';
 import { CatsService } from '../_state/cats.service';
 
@@ -22,10 +23,16 @@ export class CreateComponent implements OnInit {
 
   id;
 
+  get toggle() {
+    return this.catsService.toggle
+  }
+
   constructor(private catsService: CatsService, private catsQuery: CatsQuery, route: ActivatedRoute) { 
     this.id = +route.snapshot.params.id;
     const catCard = catsQuery.getEntity(this.id);
-    console.log(catCard)
+    this.newImage = catCard?.image!;
+    this.newName = catCard?.name!;
+    this.newDescription = catCard?.description!;
    }
 
   ngOnInit(): void {
@@ -42,11 +49,11 @@ export class CreateComponent implements OnInit {
     }
   }
 
-  get warnings ( ) {
-    return this.catsService.warnings
-  }
-
   add() {
     this.catsService.add(this.newImage, this.newName, this.newDescription);
+  }
+
+  update() {
+    this.catsService.update(this.id, this.newImage, this.newName, this.newDescription)
   }
 }

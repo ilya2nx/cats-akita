@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Params } from '@angular/router';
 import { CatsQuery } from '../../_state/cats.query';
 import { CatsService } from '../../_state/cats.service';
 
@@ -25,6 +24,10 @@ export class TileComponent implements OnInit {
 
   delete(id: number) {
     this.catsService.delete(id)
+  }
+
+  toggleT() {
+    this.catsService.changeT()
   }
 
 }

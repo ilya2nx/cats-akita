@@ -4,11 +4,8 @@ import { CatsStore } from './cats.store';
 
 @Injectable({ providedIn: 'root' })
 export class CatsService {
+  
   toggle = false
-
-  warnings: any = {}
-
-  id!: number;
 
   objs = [
     {image: 'http://html.ftpes.ru/FrontEndTest/Shironeko.jpg' , name: 'Shironeko', description: 'Самый счастливый и сонный кот в мире', id: 1, liked: false},
@@ -32,20 +29,20 @@ export class CatsService {
     this.catsStore.set(this.objs)
   }
 
+  changeT() {
+    this.toggle = true
+  }
+
+  changeF() {
+    this.toggle = false
+  }
+
 
   like(id: number,liked: any) {
-    // this.objs.map((el: any) => {
-    //   if (el.id === id) {
-    //     el.liked = !el.liked
-    //   }
-    // })
-    // const currentCat = this.catsQuery.cats.find(entity => {entity.id === id})
     this.catsStore.update(id, {liked})
   }
 
   delete(id: number) {
-    // const index = this.objs.findIndex(el => el.id === id)
-    // this.objs.splice(index, 1)
     this.catsStore.remove(id)
   }
 
@@ -54,6 +51,10 @@ export class CatsService {
       image, name, description, id: Math.random(), liked: false
     }
     this.catsStore.add(tempCat)
+  }
+
+  update(id: number, image: string, name: string, description: string) {
+    this.catsStore.update(id, {image, name, description})
   }
 
 }

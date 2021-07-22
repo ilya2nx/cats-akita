@@ -15,4 +15,7 @@ export class ListComponent implements OnInit {
     if (!this.catsQuery.getHasCache()) this.catsService.initCat();
   }
 
+  toggleF() {
+    this.catsService.changeF()
+  }
 }
