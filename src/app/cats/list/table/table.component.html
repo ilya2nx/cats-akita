@@ -1,17 +1,26 @@
 <div *ngFor="let cat of cats$ | async" class="card">
+
   <img src="{{ cat.image }}" alt="Cat-photo" class="card__photo">
+
   <div class="card__inner">
+    
     <div class="card__content">
       <p class="card__title">{{ cat.name }}</p>
+
       <p class="card__description">{{ cat.description }}</p>
+
       <button (click)="delete(cat.id)" class="btn_delete">Удалить</button>
-      <button  [routerLink]="['/create', cat.id]" class="btn_update" (click)="toggle()">Редактировать</button>
+      <button  [routerLink]="['/create', cat.id]" class="btn_update">Редактировать</button>
+      
     </div>
+
     <div (click)="like(cat.id, cat.liked)" class="card__like_pos like-pos">
       <img *ngIf="cat.liked; else liked" class="like" src="http://html.ftpes.ru/FrontEndTest/favorite_full.svg" alt="">
       <ng-template #liked>
         <img class="like" src="http://html.ftpes.ru/FrontEndTest/favorite_border.svg" alt="">
       </ng-template>
     </div>
+
   </div>
+
 </div>

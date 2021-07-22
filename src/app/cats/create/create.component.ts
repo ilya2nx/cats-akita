@@ -6,56 +6,74 @@ import { CatsQuery } from '../_state/cats.query';
 import { CatsService } from '../_state/cats.service';
 
 @Component({
-  selector: 'app-create',
-  templateUrl: './create.component.html',
-  styleUrls: ['./create.component.scss']
+    selector: 'app-create',
+    templateUrl: './create.component.html',
+    styleUrls: ['./create.component.scss'],
 })
 export class CreateComponent implements OnInit {
-  cats$ = this.catsQuery.cats$
+    form!: FormGroup;
+    id;
+    mode;
 
-  newImage = '';
-
-  newName = '';
-
-  newDescription = '';
-
-  form!: FormGroup;
-
-  id;
-
-  get toggle() {
-    return this.catsService.toggle
-  }
-
-  constructor(private catsService: CatsService, private catsQuery: CatsQuery, route: ActivatedRoute, private router: Router) { 
-    this.id = +route.snapshot.params.id;
-    const catCard = catsQuery.getEntity(this.id);
-    this.newImage = catCard?.image!;
-    this.newName = catCard?.name!;
-    this.newDescription = catCard?.description!;
-   }
-
-  ngOnInit(): void {
-    this.form = new FormGroup({
-      image: new FormControl('', Validators.required),
-      name: new FormControl('', Validators.required),
-      description: new FormControl('', Validators.required)
-    })
-  }
-
-  submit() {
-    if (this.form.valid) {
-      this.form.reset()
+    constructor(
+        private catsService: CatsService,
+        private catsQuery: CatsQuery,
+        route: ActivatedRoute,
+        private router: Router
+    ) {
+        this.id = +route.snapshot.params.id;
+        this.mode = route.snapshot.data.mode;
     }
-  }
 
-  add() {
-    this.catsService.add(this.newImage, this.newName, this.newDescription);
-    this.router.navigate(['/list', 'tile'])
-  }
+    get labelButton() {
+        return this.isEdit ? 'Редактировать' : 'Создать';
+    }
 
-  update() {
-    this.catsService.update(this.id, this.newImage, this.newName, this.newDescription)
-    this.router.navigate(['/list', 'tile'])
-  }
+    get labelTitle() {
+        return this.isEdit ? 'Редактировать карточку' : 'Создать карточку';
+    }
+
+    get isEdit() {
+        return this.mode === 'edit';
+    }
+
+    ngOnInit(): void {
+        this.initForm();
+    }
+
+    initForm() {
+        this.form = new FormGroup({
+            id: new FormControl(0),
+            image: new FormControl('', Validators.required),
+            name: new FormControl('', Validators.required),
+            description: new FormControl('', Validators.required),
+        });
+
+        if (this.isEdit) {
+            if (this.id) {
+                const enitity = this.catsQuery.getEntity(this.id);
+                enitity && this.form.patchValue(enitity);
+            }
+        }
+    }
+
+    submit() {
+        if (this.form.invalid) return;
+
+        if (!this.isEdit) {
+            this.add();
+        } else this.update();
+
+        this.form.reset();
+
+        this.router.navigate(['/list', 'tile']);
+    }
+
+    add() {
+        this.catsService.add(this.form.value);
+    }
+
+    update() {
+        this.catsService.update(this.form.value);
+    }
 }

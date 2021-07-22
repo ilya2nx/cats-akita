@@ -26,8 +26,5 @@ export class TileComponent implements OnInit {
     this.catsService.delete(id)
   }
 
-  toggleT() {
-    this.catsService.changeT()
-  }
 
 }

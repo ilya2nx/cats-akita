@@ -1,45 +1,78 @@
 <form [formGroup]="form" (ngSubmit)="submit()">
-  <div class="modal fade" id="addItemModal" tabindex="-1" aria-labelledby="addItemLabel" aria-hidden="true">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel" *ngIf="!toggle">Создать новую карточку</h5>
-          <h5 class="modal-title" id="exampleModalLabel" *ngIf="toggle">Редактировать карточку</h5>
-          <button type="button" class="close" [routerLink]="['/list', 'tile']"></button>
+    <div
+        class="modal fade"
+        id="addItemModal"
+        tabindex="-1"
+        aria-labelledby="addItemLabel"
+        aria-hidden="true"
+    >
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal__title" id="exampleModalLabel">
+                        {{ labelTitle }}
+                    </h5>
+                    <button
+                        type="button"
+                        class="close"
+                        [routerLink]="['/list', 'tile']"
+                    ></button>
+                </div>
+                <div class="modal-body">
+                    <div class="mb-3">
+                        <label for="image">Вставьте ссылку на картинку: </label>
+                        <input type="text" id="image" formControlName="image" />
+                    </div>
+                    <div
+                        *ngIf="
+                            form.get('image').invalid &&
+                            form.get('image').touched
+                        "
+                        class="warning"
+                    >
+                        <small>Поле должно быть заполено</small>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="name">Имя котика: </label>
+                        <input type="text" id="name" formControlName="name" />
+                    </div>
+                    <div
+                        *ngIf="
+                            form.get('name').invalid && form.get('name').touched
+                        "
+                        class="warning"
+                    >
+                        <small>Поле должно быть заполено</small>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="description">Описание котика: </label>
+                        <input
+                            type="text"
+                            id="description"
+                            formControlName="description"
+                        />
+                    </div>
+                    <div
+                        *ngIf="
+                            form.get('description').invalid &&
+                            form.get('description').touched
+                        "
+                        class="warning"
+                    >
+                        <small *ngIf="form.get('description').errors.required"
+                            >Поле должно быть заполено</small
+                        >
+                    </div>
+                </div>
+
+                <div class="modal-footer">
+                    <button [disabled]="form.invalid" type="submit" class="btn">
+                        {{ labelButton }}
+                    </button>
+                </div>
+            </div>
         </div>
-        <div class="modal-body">
-          <div class="mb-3">
-            <label for="image">Вставьте ссылку на картинку: </label>
-            <input [(ngModel)]="newImage" type="text" id="image" formControlName="image">
-          </div>
-          <div 
-            *ngIf="form.get('image').invalid && form.get('image').touched" 
-            class="warning"
-          ><small>Поле должно быть заполено</small></div>
-          <div class="mb-3">
-            <label for="name">Имя котика: </label>
-            <input  [(ngModel)]="newName" type="text" id="name" formControlName="name">
-          </div>
-          <div 
-            *ngIf="form.get('name').invalid && form.get('name').touched" 
-            class="warning"
-          ><small>Поле должно быть заполено</small></div>
-          <div class="mb-3">
-            <label for="description">Описание котика: </label>
-            <input  [(ngModel)]="newDescription" type="text" id="description" formControlName="description">
-          </div>
-          <div 
-            *ngIf="form.get('description').invalid && form.get('description').touched" 
-            class="warning"
-          >
-            <small *ngIf="form.get('description').errors.required">Поле должно быть заполено</small>
-        </div>
-        </div>
-        <div class="modal-footer">
-          <button (click)="add()" [disabled]="form.invalid" type="submit" class="btn" *ngIf="!toggle">Создать</button>
-          <button (click)="update()" [disabled]="form.invalid" type="button" class="btn" *ngIf="toggle">Редактировать</button>
-        </div>
-      </div>
     </div>
-  </div>
 </form>
