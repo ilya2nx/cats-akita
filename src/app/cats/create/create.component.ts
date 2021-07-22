@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 import { CatsQuery } from '../_state/cats.query';
 import { CatsService } from '../_state/cats.service';
@@ -27,7 +27,7 @@ export class CreateComponent implements OnInit {
     return this.catsService.toggle
   }
 
-  constructor(private catsService: CatsService, private catsQuery: CatsQuery, route: ActivatedRoute) { 
+  constructor(private catsService: CatsService, private catsQuery: CatsQuery, route: ActivatedRoute, private router: Router) { 
     this.id = +route.snapshot.params.id;
     const catCard = catsQuery.getEntity(this.id);
     this.newImage = catCard?.image!;
@@ -51,9 +51,11 @@ export class CreateComponent implements OnInit {
 
   add() {
     this.catsService.add(this.newImage, this.newName, this.newDescription);
+    this.router.navigate(['/list', 'tile'])
   }
 
   update() {
     this.catsService.update(this.id, this.newImage, this.newName, this.newDescription)
+    this.router.navigate(['/list', 'tile'])
   }
 }
